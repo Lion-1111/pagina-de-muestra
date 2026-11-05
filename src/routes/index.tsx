@@ -53,7 +53,7 @@ function Carrusel() {
     const id = setInterval(() => setI((v) => (v + 1) % n), 7000);
     return () => clearInterval(id);
   }, [i, n]);
-  const o = opiniones[i];
+  const o = opiniones[i] ?? opiniones[0]!;
   return (
     <div className="mx-auto max-w-3xl">
       <figure className="border border-border bg-card p-8 text-center md:p-10">
