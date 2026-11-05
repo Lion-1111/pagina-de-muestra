@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, MapPin, Clock, Star, Scale, Users, Home, FileText, HeartHandshake, Gavel, Quote } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Phone, MapPin, Clock, Star, Scale, Users, Home, FileText, HeartHandshake, Gavel, Quote } from "lucide-react";
 import despacho from "@/assets/despacho.jpg";
 import retrato from "@/assets/amparo-garcia.png.asset.json";
 
@@ -45,6 +46,32 @@ function Stars() {
   );
 }
 
+function Carrusel() {
+  const [i, setI] = useState(0);
+  const n = opiniones.length;
+  useEffect(() => {
+    const id = setInterval(() => setI((v) => (v + 1) % n), 7000);
+    return () => clearInterval(id);
+  }, [i, n]);
+  const o = opiniones[i];
+  return (
+    <div className="mx-auto max-w-3xl">
+      <figure className="border border-border bg-card p-8 text-center md:p-10">
+        <Quote className="mx-auto h-8 w-8 text-accent" strokeWidth={1.25} />
+        <blockquote key={i} className="mt-4 min-h-[8rem] animate-in fade-in font-serif text-lg leading-relaxed md:text-xl">{o.t}</blockquote>
+        <figcaption className="mt-4 flex flex-col items-center gap-1 text-sm"><span className="font-semibold">{o.n}</span><Stars /></figcaption>
+      </figure>
+      <div className="mt-5 flex items-center justify-center gap-4">
+        <button aria-label="Anterior" onClick={() => setI((i - 1 + n) % n)} className="border border-border p-2 hover:border-accent hover:text-accent"><ChevronLeft className="h-5 w-5" /></button>
+        {opiniones.map((_, k) => (
+          <button key={k} aria-label={`Opinión ${k + 1}`} onClick={() => setI(k)} className={`h-2 rounded-full transition-all ${k === i ? "w-6 bg-accent" : "w-2 bg-border"}`} />
+        ))}
+        <button aria-label="Siguiente" onClick={() => setI((i + 1) % n)} className="border border-border p-2 hover:border-accent hover:text-accent"><ChevronRight className="h-5 w-5" /></button>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
@@ -64,10 +91,10 @@ function Index() {
       </header>
 
       {/* Portada */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[70vh] items-center overflow-hidden">
         <img src={despacho} alt="Despacho jurídico" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-32 text-primary-foreground">
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
           <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Abogada · Tijuana, Baja California</p>
           <h1 className="max-w-3xl font-serif text-5xl leading-[1.05] md:text-7xl">Lic. Amparo García Ascencio</h1>
           <p className="mt-6 max-w-xl text-lg text-primary-foreground/80">
@@ -77,15 +104,15 @@ function Index() {
             <a href={WA} target="_blank" rel="noreferrer" className="bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground hover:opacity-90">Agendar consulta</a>
             <a href={TEL_HREF} className="border border-primary-foreground/40 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-accent hover:text-accent">Llamar ahora</a>
           </div>
-          <div className="mt-14 flex items-center gap-3 text-sm text-primary-foreground/80">
+          <div className="mt-8 flex items-center gap-3 text-sm text-primary-foreground/80">
             <Stars /> <span><strong className="text-primary-foreground">5.0</strong> · 87 opiniones en Google</span>
           </div>
         </div>
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="mb-14 max-w-2xl">
+      <section id="servicios" className="mx-auto max-w-6xl px-6 py-14">
+        <div className="mb-8 max-w-2xl">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Áreas de práctica</p>
           <h2 className="mt-3 font-serif text-4xl md:text-5xl">Asesoría legal integral para usted y su familia</h2>
         </div>
@@ -102,9 +129,9 @@ function Index() {
 
       {/* Perfil */}
       <section id="perfil" className="bg-primary text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-24 md:grid-cols-[2fr_3fr]">
-          <div className="relative">
-            <div className="absolute -left-4 -top-4 h-full w-full border border-accent" />
+        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-14 md:grid-cols-[auto_1fr]">
+          <div className="relative mx-auto w-48 md:w-64">
+            <div className="absolute -left-3 -top-3 h-full w-full border border-accent" />
             <img src={retrato.url} alt="Lic. Amparo García Ascencio" loading="lazy" className="relative aspect-[4/5] w-full object-cover object-top" />
           </div>
           <div>
@@ -116,7 +143,7 @@ function Index() {
             <p className="mt-4 leading-relaxed text-primary-foreground/80">
               Desde su despacho en Tijuana, la Lic. García Ascencio acompaña a cada cliente con honestidad, precios justos y comunicación clara, tanto de forma presencial como a distancia.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-8">
+            <div className="mt-6 grid grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-8">
               <div><p className="font-serif text-4xl text-accent">5.0</p><p className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">Calificación</p></div>
               <div><p className="font-serif text-4xl text-accent">87</p><p className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">Opiniones</p></div>
               <div><p className="font-serif text-4xl text-accent">100%</p><p className="mt-1 text-xs uppercase tracking-wider text-primary-foreground/60">Recomendable</p></div>
@@ -126,23 +153,13 @@ function Index() {
       </section>
 
       {/* Opiniones */}
-      <section id="opiniones" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="mb-14 text-center">
+      <section id="opiniones" className="mx-auto max-w-6xl px-6 py-14">
+        <div className="mb-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Testimonios</p>
           <h2 className="mt-3 font-serif text-4xl md:text-5xl">Lo que dicen nuestros clientes</h2>
           <div className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground"><Stars /> 5.0 de 5 · 87 opiniones verificadas en Google</div>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {opiniones.map((o) => (
-            <figure key={o.n} className="flex flex-col border border-border bg-card p-8">
-              <Quote className="h-8 w-8 text-accent" strokeWidth={1.25} />
-              <blockquote className="mt-4 flex-1 font-serif text-lg leading-relaxed">{o.t}</blockquote>
-              <figcaption className="mt-6 flex items-center justify-between border-t border-border pt-4 text-sm">
-                <span className="font-semibold">{o.n}</span><Stars />
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <Carrusel />
         <div className="mt-10 flex flex-wrap justify-center gap-3 text-sm italic text-muted-foreground">
           <span>"Excelente servicio, muy rápido y eficiente"</span><span>·</span>
           <span>"Dedicación y tacto al explicar cada tema"</span>
@@ -151,7 +168,7 @@ function Index() {
 
       {/* Contacto */}
       <section id="contacto" className="border-t border-border bg-secondary">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-2">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Contacto</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">Agende su consulta</h2>
