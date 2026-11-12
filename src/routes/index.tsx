@@ -8,9 +8,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Lic. Amparo García Ascencio | Abogada Familiar y Civil en Tijuana" },
-      { name: "description", content: "Abogada especialista en derecho familiar y civil en Tijuana, B.C. Divorcios, pensión alimenticia, custodia y juicios civiles. 5.0 con 87 opiniones." },
-      { property: "og:title", content: "Lic. Amparo García Ascencio — Abogada en Tijuana" },
-      { property: "og:description", content: "Divorcios, pensión alimenticia, custodia y asuntos civiles con ética y profesionalismo." },
+      { name: "description", content: "Despacho jurídico con principios y valores fundados en la honestidad, ética y profesionalismo, con la única misión de proveer un servicio de calidad en Tijuana, B.C." },
+      { property: "og:title", content: "Lic. Amparo García Ascencio — Despacho Jurídico en Tijuana" },
+      { property: "og:description", content: "Despacho jurídico con principios y valores fundados en la honestidad, ética y profesionalismo, con la única misión de proveer un servicio de calidad." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -104,10 +104,13 @@ function Index() {
         <div className="relative mx-auto w-full max-w-6xl px-6 py-28 text-primary-foreground">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
             <div className="max-w-2xl">
-              <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Abogada · Tijuana, Baja California</p>
+              <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Despacho Jurídico · Tijuana, Baja California</p>
               <h1 className="font-serif text-5xl leading-[1.05] md:text-7xl">Lic. Amparo García Ascencio</h1>
-              <p className="mt-6 max-w-xl text-lg text-primary-foreground/80">
-                Especialista en Derecho Familiar y Civil. Defensa jurídica con ética, claridad y el tacto que los asuntos familiares merecen.
+              <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-primary-foreground/90">
+                Despacho jurídico con principios y valores fundados en la honestidad, ética y profesionalismo, con la única misión de proveer un servicio de calidad.
+              </p>
+              <p className="mt-3 max-w-xl text-base text-primary-foreground/75">
+                Especialista en Derecho Familiar y Civil. Defensa jurídica con claridad y el tacto que cada asunto merece.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a href={WA} target="_blank" rel="noreferrer" className="bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground hover:opacity-90">Agendar consulta</a>
