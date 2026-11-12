@@ -102,32 +102,21 @@ function Index() {
         <img src={despacho} alt="Despacho jurídico" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto w-full max-w-6xl px-6 py-28 text-primary-foreground">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
-            <div className="max-w-2xl">
-              <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Despacho Jurídico · Tijuana, Baja California</p>
-              <h1 className="font-serif text-5xl leading-[1.05] md:text-7xl">Lic. Amparo García Ascencio</h1>
-              <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-primary-foreground/90">
-                Despacho jurídico con principios y valores fundados en la honestidad, ética y profesionalismo, con la única misión de proveer un servicio de calidad.
-              </p>
-              <p className="mt-3 max-w-xl text-base text-primary-foreground/75">
-                Especialista en Derecho Familiar y Civil. Defensa jurídica con claridad y el tacto que cada asunto merece.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a href={WA} target="_blank" rel="noreferrer" className="bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground hover:opacity-90">Agendar consulta</a>
-                <a href={TEL_HREF} className="border border-primary-foreground/40 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-accent hover:text-accent">Llamar ahora</a>
-              </div>
-              <div className="mt-8 flex items-center gap-3 text-sm text-primary-foreground/80">
-                <Stars /> <span><strong className="text-primary-foreground">5.0</strong> · 87 opiniones en Google</span>
-              </div>
+          <div className="max-w-3xl">
+            <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Despacho Jurídico · Tijuana, Baja California</p>
+            <h1 className="font-serif text-5xl leading-[1.05] md:text-7xl">Lic. Amparo García Ascencio</h1>
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-primary-foreground/90">
+              Despacho jurídico con principios y valores fundados en la honestidad, ética y profesionalismo, con la única misión de proveer un servicio de calidad.
+            </p>
+            <p className="mt-3 max-w-xl text-base text-primary-foreground/75">
+              Especialista en Derecho Familiar y Civil. Defensa jurídica con claridad y el tacto que cada asunto merece.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a href={WA} target="_blank" rel="noreferrer" className="bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground hover:opacity-90">Agendar consulta</a>
+              <a href={TEL_HREF} className="border border-primary-foreground/40 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-accent hover:text-accent">Llamar ahora</a>
             </div>
-            <div className="hidden lg:flex flex-col items-center justify-center">
-              <div className="relative rounded-2xl border border-accent/40 bg-black/40 p-3 shadow-2xl backdrop-blur-md">
-                <img
-                  src={logo}
-                  alt="Emblema Lic. Amparo García Ascencio"
-                  className="h-60 w-60 rounded-xl object-contain shadow-inner"
-                />
-              </div>
+            <div className="mt-8 flex items-center gap-3 text-sm text-primary-foreground/80">
+              <Stars /> <span><strong className="text-primary-foreground">5.0</strong> · 87 opiniones en Google</span>
             </div>
           </div>
         </div>
