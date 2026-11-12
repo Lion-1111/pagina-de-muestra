@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Phone, MapPin, Clock, Star, Scale, Users, Home, FileText, HeartHandshake, Gavel, Quote } from "lucide-react";
 import despacho from "@/assets/despacho.jpg";
-import retrato from "@/assets/amparo-garcia.png.asset.json";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,8 +76,15 @@ function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       <header className="absolute inset-x-0 top-0 z-20">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-primary-foreground">
-          <a href="#" className="font-serif text-xl tracking-wide">A. García Ascencio</a>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-primary-foreground">
+          <a href="#" className="group flex items-center gap-3">
+            <img
+              src={logo}
+              alt="Logo Lic. Amparo García Ascencio"
+              className="h-11 w-11 rounded-full border border-accent/50 object-cover shadow-md transition-transform group-hover:scale-105"
+            />
+            <span className="font-serif text-xl tracking-wide">A. García Ascencio</span>
+          </a>
           <nav className="hidden gap-8 text-sm md:flex">
             <a href="#servicios" className="hover:text-accent">Servicios</a>
             <a href="#perfil" className="hover:text-accent">Perfil</a>
@@ -91,21 +98,34 @@ function Index() {
       </header>
 
       {/* Portada */}
-      <section className="relative flex min-h-[70vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[75vh] items-center overflow-hidden">
         <img src={despacho} alt="Despacho jurídico" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-24 text-primary-foreground">
-          <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Abogada · Tijuana, Baja California</p>
-          <h1 className="max-w-3xl font-serif text-5xl leading-[1.05] md:text-7xl">Lic. Amparo García Ascencio</h1>
-          <p className="mt-6 max-w-xl text-lg text-primary-foreground/80">
-            Especialista en Derecho Familiar y Civil. Defensa jurídica con ética, claridad y el tacto que los asuntos familiares merecen.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href={WA} target="_blank" rel="noreferrer" className="bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground hover:opacity-90">Agendar consulta</a>
-            <a href={TEL_HREF} className="border border-primary-foreground/40 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-accent hover:text-accent">Llamar ahora</a>
-          </div>
-          <div className="mt-8 flex items-center gap-3 text-sm text-primary-foreground/80">
-            <Stars /> <span><strong className="text-primary-foreground">5.0</strong> · 87 opiniones en Google</span>
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-28 text-primary-foreground">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
+            <div className="max-w-2xl">
+              <p className="mb-6 text-xs uppercase tracking-[0.3em] text-accent">Abogada · Tijuana, Baja California</p>
+              <h1 className="font-serif text-5xl leading-[1.05] md:text-7xl">Lic. Amparo García Ascencio</h1>
+              <p className="mt-6 max-w-xl text-lg text-primary-foreground/80">
+                Especialista en Derecho Familiar y Civil. Defensa jurídica con ética, claridad y el tacto que los asuntos familiares merecen.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a href={WA} target="_blank" rel="noreferrer" className="bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-accent-foreground hover:opacity-90">Agendar consulta</a>
+                <a href={TEL_HREF} className="border border-primary-foreground/40 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-accent hover:text-accent">Llamar ahora</a>
+              </div>
+              <div className="mt-8 flex items-center gap-3 text-sm text-primary-foreground/80">
+                <Stars /> <span><strong className="text-primary-foreground">5.0</strong> · 87 opiniones en Google</span>
+              </div>
+            </div>
+            <div className="hidden lg:flex flex-col items-center justify-center">
+              <div className="relative rounded-2xl border border-accent/40 bg-black/40 p-3 shadow-2xl backdrop-blur-md">
+                <img
+                  src={logo}
+                  alt="Emblema Lic. Amparo García Ascencio"
+                  className="h-60 w-60 rounded-xl object-contain shadow-inner"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -129,10 +149,17 @@ function Index() {
 
       {/* Perfil */}
       <section id="perfil" className="bg-primary text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-14 md:grid-cols-[auto_1fr]">
-          <div className="relative mx-auto w-48 md:w-64">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-16 md:grid-cols-[auto_1fr]">
+          <div className="relative mx-auto w-56 md:w-72">
             <div className="absolute -left-3 -top-3 h-full w-full border border-accent" />
-            <img src={retrato.url} alt="Lic. Amparo García Ascencio" loading="lazy" className="relative aspect-[4/5] w-full object-cover object-top" />
+            <div className="relative aspect-square w-full overflow-hidden rounded-sm border border-accent/30 bg-black/30 p-2 shadow-2xl">
+              <img
+                src={logo}
+                alt="Presentación Lic. Amparo García Ascencio"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Sobre la licenciada</p>
@@ -191,8 +218,11 @@ function Index() {
       </section>
 
       <footer className="bg-primary text-primary-foreground/70">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm md:flex-row">
-          <span className="font-serif text-lg text-primary-foreground">Lic. Amparo García Ascencio</span>
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm md:flex-row">
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Logo" className="h-8 w-8 rounded-full border border-accent/40 object-cover" />
+            <span className="font-serif text-lg text-primary-foreground">Lic. Amparo García Ascencio</span>
+          </div>
           <span>Abogada especialista en Derecho Familiar y Civil · Tijuana, B.C.</span>
         </div>
       </footer>
